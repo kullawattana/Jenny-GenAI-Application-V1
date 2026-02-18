@@ -5,21 +5,21 @@
 
 ---
 
-## สารบัญ / Table of Contents
+## Table of Contents
 
-- [ภาพรวมโปรเจค](#ภาพรวมโปรเจค)
+- [Project Overview](#project-overview)
 - [Tech Stack & Libraries](#tech-stack--libraries)
-- [โครงสร้างโปรเจค](#โครงสร้างโปรเจค)
+- [Project Structure](#project-structure)
 - [Architecture Overview](#architecture-overview)
-- [Flowchart การทำงาน](#flowchart-การทำงาน)
+- [Flowcharts](#flowcharts)
 - [API & Backend](#api--backend)
 - [Data Models](#data-models)
 - [State Management](#state-management)
-- [การตั้งค่าและรันโปรเจค](#การตั้งค่าและรันโปรเจค)
+- [Setup & Installation](#setup--installation)
 
 ---
 
-## ภาพรวมโปรเจค
+## Project Overview
 
 **Jenny Kiosk** is a self-service kiosk application for Jaymart retail stores, built with Flutter and supported across iOS, Android, Web, macOS, Linux, and Windows. Users can:
 
@@ -34,89 +34,89 @@
 
 ### Framework & Language
 
-| รายการ | รายละเอียด |
-|--------|-----------|
+| Item | Details |
+|------|---------|
 | Framework | Flutter |
 | Language | Dart ^3.5.0 |
 | Platforms | iOS, Android, Web, macOS, Linux, Windows |
 
 ### State Management & DI
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
-| `flutter_bloc` | 8.1.6 | BLoC pattern สำหรับ state management หลัก |
+| Library | Version | Usage |
+|---------|---------|-------|
+| `flutter_bloc` | 8.1.6 | BLoC pattern for main state management |
 | `bloc` | 8.1.4 | Core BLoC library |
-| `provider` | 6.1.2 | Provider pattern สำหรับ service injection |
+| `provider` | 6.1.2 | Provider pattern for service injection |
 | `get_it` | 7.2.0 | Service Locator / Dependency Injection |
 
 ### Navigation
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
-| `go_router` | 12.1.3 | Declarative routing และ deep linking |
+| Library | Version | Usage |
+|---------|---------|-------|
+| `go_router` | 12.1.3 | Declarative routing and deep linking |
 
 ### UI & Animations
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
+| Library | Version | Usage |
+|---------|---------|-------|
 | `flutter_chat_ui` | 1.6.15 | Chat interface components |
-| `carousel_slider` | 5.0.0 | Banner carousel บน Home |
+| `carousel_slider` | 5.0.0 | Banner carousel on Home screen |
 | `lottie` | 3.1.2 | Lottie animation |
 | `auto_size_text` | 3.0.0 | Responsive text sizing |
 | `flutter_svg` | 2.0.10 | SVG rendering |
 
 ### Networking & Cloud
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
-| `http` | 1.2.2 | HTTP client สำหรับ REST API |
+| Library | Version | Usage |
+|---------|---------|-------|
+| `http` | 1.2.2 | HTTP client for REST API |
 | `aws_signature_v4` | 0.6.3 | AWS Signature V4 authentication |
 | `aws_common` | 0.7.3 | AWS utilities |
 
 ### Authentication
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
+| Library | Version | Usage |
+|---------|---------|-------|
 | `google_sign_in` | 6.2.1 | Google OAuth login |
 | `flutter_facebook_auth` | 6.0.4 | Facebook login |
 
 ### Device Features
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
+| Library | Version | Usage |
+|---------|---------|-------|
 | `flutter_tts` | 4.0.2 | Text-to-Speech |
-| `image_picker` | ^1.1.2 | Image selection จาก device |
+| `image_picker` | ^1.1.2 | Image selection from device |
 | `qr_flutter` | 4.1.0 | QR Code generation |
 | `connectivity_plus` | 6.0.5 | Network connectivity detection |
 
 ### Storage & Security
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
+| Library | Version | Usage |
+|---------|---------|-------|
 | `flutter_secure_storage` | 4.2.1 | Encrypted local storage |
 | `shared_preferences` | 2.3.2 | Key-value lightweight storage |
 | `flutter_dotenv` | 5.0.2 | Environment variables (.env) |
 
 ### Localization
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
+| Library | Version | Usage |
+|---------|---------|-------|
 | `easy_localization` | 3.0.7 | Multi-language support (EN/TH) |
 | `easy_localization_loader` | 2.0.2 | Load localization assets |
 | `intl` | 0.19.0 | Date/Number formatting |
 
 ### Utilities
 
-| Library | Version | การใช้งาน |
-|---------|---------|-----------|
-| `uuid` | 4.5.1 | UUID generation สำหรับ message ID |
-| `url_launcher` | 6.3.1 | เปิด URL ภายนอก |
+| Library | Version | Usage |
+|---------|---------|-------|
+| `uuid` | 4.5.1 | UUID generation for message ID |
+| `url_launcher` | 6.3.1 | Open external URLs |
 | `equatable` | 2.0.5 | Value equality comparison |
 | `awesome_notifications` | 0.9.3+1 | Push notifications |
 
 ---
 
-## โครงสร้างโปรเจค
+## Project Structure
 
 ```
 Jenny-GenAI-Application-V1/
@@ -304,17 +304,17 @@ Jenny-GenAI-Application-V1/
 
 ### Layer Responsibilities
 
-| Layer | ความรับผิดชอบ |
-|-------|--------------|
-| **View** | แสดง UI, รับ input จากผู้ใช้, ฟัง state changes |
-| **BLoC/Cubit** | จัดการ business logic, state transitions, orchestrate data flow |
+| Layer | Responsibility |
+|-------|---------------|
+| **View** | Renders UI, receives user input, listens to state changes |
+| **BLoC/Cubit** | Manages business logic, state transitions, orchestrates data flow |
 | **Repository** | HTTP calls, serialize/deserialize JSON, error handling |
 | **Backend** | LLM orchestration, prompt engineering, AWS Bedrock integration |
-| **AWS Bedrock** | Vector search บน product catalog, LLM inference |
+| **AWS Bedrock** | Vector search on product catalog, LLM inference |
 
 ---
 
-## Flowchart การทำงาน
+## Flowcharts
 
 ### 1. Application Startup Flow
 
@@ -341,7 +341,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     A([Welcome Kiosk Page]) --> B[Home Page]
-    B --> C{ผู้ใช้เลือก}
+    B --> C{User selects}
     C --> D[Product Search]
     C --> E[Promotions]
     C --> F[Verification]
@@ -377,10 +377,10 @@ sequenceDiagram
     participant BE as Backend Server
     participant AWS as AWS Bedrock
 
-    U->>AI: พิมพ์ข้อความ
+    U->>AI: Type message
     AI->>AI: _handleSendPressed()
-    AI->>AI: สร้าง TextMessage\n(UUID, timestamp)
-    AI->>AI: _addMessage() → แสดงข้อความ user
+    AI->>AI: Create TextMessage\n(UUID, timestamp)
+    AI->>AI: _addMessage() → display user message
 
     AI->>SP: requestProduct(BotRequest)
     Note over SP: inputText, chatHistory,\nminPrice, maxPrice,\ndiscount, point filters
@@ -395,9 +395,9 @@ sequenceDiagram
     SP->>SP: Parse JSON → BotResponse
     SP-->>AI: return BotResponse
 
-    AI->>AI: สร้าง bot TextMessage
-    AI->>AI: _addMessage() → แสดงข้อความ bot
-    AI->>U: UI อัปเดตแสดงคำตอบ
+    AI->>AI: Create bot TextMessage
+    AI->>AI: _addMessage() → display bot message
+    AI->>U: UI updates with response
 ```
 
 ---
@@ -406,7 +406,7 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    A([Product Search Page]) --> B{เลือก Category Tab}
+    A([Product Search Page]) --> B{Select Category Tab}
     B --> |Recommend/Mobile/\nTablet/Notebook/...| C[ProductCubit\ngetProductOnAWSBedrock]
 
     C --> D[Build BotRequest]
@@ -501,7 +501,7 @@ flowchart TD
     D --> E[Default locale: TH]
 
     E --> F{User changes language}
-    F --> |เลือก EN/TH flag icon| G[ApplicationCubit\nupdateLocale]
+    F --> |Select EN/TH flag icon| G[ApplicationCubit\nupdateLocale]
     G --> H[SecureStorageLanguageService\nsave locale]
     H --> I[EasyLocalization\ncontext.setLocale]
     I --> J[UI rebuilds\nwith new locale]
@@ -525,15 +525,15 @@ http://184.72.103.175:5000
 **Request Body:**
 ```json
 {
-  "input_text": "แนะนำมือถือราคาไม่เกิน 15000",
+  "input_text": "Recommend a phone under 15000",
   "chat_history": [
     {
       "role": "user",
-      "content": "สวัสดี"
+      "content": "Hello"
     },
     {
       "role": "bot",
-      "content": "สวัสดีครับ มีอะไรให้ช่วยไหม"
+      "content": "Hi there! How can I help you?"
     }
   ],
   "min_price": 0,
@@ -548,7 +548,7 @@ http://184.72.103.175:5000
 ```json
 {
   "messageType": "product",
-  "output": "ขอแนะนำ iPhone 15 ราคา 29,900 บาท...",
+  "output": "I recommend the iPhone 15 priced at 29,900 THB...",
   "retrieved_references": [
     {
       "content": "product detail text",
@@ -579,27 +579,27 @@ http://184.72.103.175:5000
 ### BotRequest
 ```dart
 class BotRequest {
-  String inputText;           // คำถาม/ข้อความจากผู้ใช้
-  List<ChatHistory> chatHistory; // ประวัติการสนทนา
-  int minPrice;               // ราคาต่ำสุด
-  int maxPrice;               // ราคาสูงสุด
-  int minDiscountPc;          // ส่วนลด % ขั้นต่ำ
-  int minDiscountValue;       // ส่วนลดเป็นบาทขั้นต่ำ
-  int minPoint;               // แต้มสะสมขั้นต่ำ
+  String inputText;              // User query / message
+  List<ChatHistory> chatHistory; // Conversation history
+  int minPrice;                  // Minimum price filter
+  int maxPrice;                  // Maximum price filter
+  int minDiscountPc;             // Minimum discount percentage
+  int minDiscountValue;          // Minimum discount amount
+  int minPoint;                  // Minimum loyalty points
 }
 
 class ChatHistory {
-  String role;    // "user" หรือ "bot"
-  String content; // ข้อความ
+  String role;    // "user" or "bot"
+  String content; // Message text
 }
 ```
 
 ### BotResponse
 ```dart
 class BotResponse {
-  String output;                             // ข้อความตอบกลับจาก AI
-  String messageType;                        // ประเภทข้อความ
-  List<RetrievedReferences> retrievedReferences; // รายการสินค้า
+  String output;                             // AI-generated response text
+  String messageType;                        // Message type
+  List<RetrievedReferences> retrievedReferences; // Product list
 }
 
 class RetrievedReferences {
@@ -637,24 +637,24 @@ class ShoppingCartInfo {
 
 ### ApplicationCubit — Global App State
 
-| State Property | Type | คำอธิบาย |
-|---------------|------|---------|
-| `screenWidth` | double | ความกว้างหน้าจอ |
-| `screenHeight` | double | ความสูงหน้าจอ |
-| `currentSelectLocale` | Locale | ภาษาที่เลือก (en/th) |
-| `toggleLoading` | bool | สถานะ loading overlay |
+| State Property | Type | Description |
+|---------------|------|-------------|
+| `screenWidth` | double | Screen width |
+| `screenHeight` | double | Screen height |
+| `currentSelectLocale` | Locale | Selected language (en/th) |
+| `toggleLoading` | bool | Global loading overlay state |
 | `loadingKeys` | Map | Granular loading per feature |
 
 ### ProductCubit — Product & Cart State
 
-| State Property | Type | คำอธิบาย |
-|---------------|------|---------|
-| `productList` | List<ProductInfo> | รายการสินค้าจาก API |
+| State Property | Type | Description |
+|---------------|------|-------------|
+| `productList` | List\<ProductInfo\> | Product list from API |
 | `selectedBrand` | String | Brand filter |
 | `selectedUsage` | String | Usage filter |
 | `minPrice` / `maxPrice` | int | Price range filter |
-| `shoppingCartList` | List<ShoppingCartInfo> | รายการในตะกร้า |
-| `totalPrice` | double | ราคารวม |
+| `shoppingCartList` | List\<ShoppingCartInfo\> | Items in cart |
+| `totalPrice` | double | Total cart price |
 
 ---
 
@@ -680,7 +680,7 @@ class ShoppingCartInfo {
 | Caption | 14px | Regular |
 | Small | 12px | Regular |
 
-**Font Family:** THSarabunPSK (ไทย Sarabun)
+**Font Family:** THSarabunPSK (Thai Sarabun)
 
 ### Responsive Breakpoints
 
@@ -693,13 +693,13 @@ class ShoppingCartInfo {
 
 ---
 
-## การตั้งค่าและรันโปรเจค
+## Setup & Installation
 
 ### Prerequisites
 - Flutter SDK >= 3.5.0
 - Dart SDK >= 3.5.0
-- Xcode (สำหรับ iOS/macOS)
-- Android Studio (สำหรับ Android)
+- Xcode (for iOS/macOS)
+- Android Studio (for Android)
 
 ### Installation
 
@@ -713,12 +713,12 @@ flutter pub get
 
 # 3. Setup environment variables
 cp env-dev .env
-# แก้ไขค่าใน .env ตามต้องการ
+# Edit values in .env as needed
 
 # 4. Run application
 flutter run
 
-# รันบน platform ที่ต้องการ
+# Run on a specific platform
 flutter run -d ios
 flutter run -d android
 flutter run -d macos
@@ -753,17 +753,17 @@ flutter build macos --release
 
 ## Route Map
 
-| Route | Page | คำอธิบาย |
-|-------|------|---------|
-| `/` | WelcomeKioskPage | หน้าต้อนรับ |
-| `/home` | HomePage | หน้าหลัก เมนูหลัก 4 รายการ |
-| `/product_search` | ProductSearchPage | ค้นหาสินค้าด้วย AI |
-| `/product_information` | ProductInformationPage | รายละเอียดสินค้า |
-| `/promotion` | PromotionPage | หน้าโปรโมชั่น |
-| `/verification_success` | VerificationSuccessPage | ยืนยันตัวตนสำเร็จ |
-| `/shopping_cart` | ShoppingCartPage | ตะกร้าสินค้า |
-| `/ai_assistant` | AIAssistantPage | แชทกับ Jayne AI |
-| `/thank_you` | ThankYouPage | หน้าขอบคุณ |
+| Route | Page | Description |
+|-------|------|-------------|
+| `/` | WelcomeKioskPage | Welcome screen |
+| `/home` | HomePage | Main screen with 4 menu options |
+| `/product_search` | ProductSearchPage | AI-powered product search |
+| `/product_information` | ProductInformationPage | Product detail |
+| `/promotion` | PromotionPage | Promotions screen |
+| `/verification_success` | VerificationSuccessPage | Identity verification success |
+| `/shopping_cart` | ShoppingCartPage | Shopping cart |
+| `/ai_assistant` | AIAssistantPage | Chat with Jayne AI |
+| `/thank_you` | ThankYouPage | Thank you screen |
 
 ---
 
@@ -773,7 +773,7 @@ flutter build macos --release
 components/
 ├── atoms/          # Building blocks
 │   ├── Button variants (Base, Primary, Floating)
-│   ├── TypingAnimation (แสดงระหว่าง AI กำลังตอบ)
+│   ├── TypingAnimation (shown while AI is responding)
 │   ├── MessageTime
 │   └── WidgetSpacer
 │
