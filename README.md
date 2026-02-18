@@ -21,12 +21,12 @@
 
 ## ภาพรวมโปรเจค
 
-**Jenny Kiosk** เป็นแอปพลิเคชันตู้บริการตนเอง (Kiosk) สำหรับร้านค้าปลีก Jaymart พัฒนาด้วย Flutter รองรับทั้ง iOS, Android, Web, macOS, Linux และ Windows ผู้ใช้สามารถ:
+**Jenny Kiosk** is a self-service kiosk application for Jaymart retail stores, built with Flutter and supported across iOS, Android, Web, macOS, Linux, and Windows. Users can:
 
-- ค้นหาและดูข้อมูลสินค้าด้วย AI (AWS Bedrock)
-- สนทนากับ AI Assistant "Jayne" เพื่อรับคำแนะนำสินค้า
-- ดูโปรโมชั่น / ยืนยันตัวตน / จัดการตะกร้าสินค้า
-- รองรับ 2 ภาษา: ไทย / อังกฤษ
+- Search and browse products powered by AI (AWS Bedrock)
+- Chat with AI Assistant "Jayne" for personalized product recommendations
+- View promotions, verify identity, and manage their shopping cart
+- Switch between 2 languages: Thai / English
 
 ---
 
